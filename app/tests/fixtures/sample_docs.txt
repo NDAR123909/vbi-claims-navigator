@@ -1,0 +1,42 @@
+DD214 - Sample Document
+DEPARTMENT OF DEFENSE
+DD FORM 214
+CERTIFICATE OF RELEASE OR DISCHARGE FROM ACTIVE DUTY
+
+NAME: John Doe
+SSN: 123-45-6789
+BRANCH OF SERVICE: US Army
+DATE OF ENTRY: 2010-01-15
+DATE OF SEPARATION: 2014-03-20
+CHARACTER OF SERVICE: Honorable
+
+---
+
+C&P Exam - Sample Document
+DEPARTMENT OF VETERANS AFFAIRS
+COMPENSATION & PENSION EXAMINATION REPORT
+
+VETERAN: John Doe
+EXAM DATE: 2020-05-15
+DIAGNOSIS: Post-Traumatic Stress Disorder (PTSD)
+
+HISTORY: Veteran reports experiencing symptoms of PTSD following deployment.
+
+---
+
+MRI Report - Sample Document
+RADIOLOGY REPORT
+MAGNETIC RESONANCE IMAGING (MRI)
+
+PATIENT: John Doe
+EXAM DATE: 2020-06-01
+FINDINGS: L4-L5 disc herniation noted
+
+---
+
+Buddy Letter - Sample Document
+BUDDY STATEMENT
+VA FORM 21-4138
+
+I, Michael Johnson, served with John Doe in Afghanistan. I witnessed John experiencing significant stress and trauma during our deployment.
+
