@@ -146,7 +146,7 @@ def seed_clients():
             branch_of_service="US Army",
             service_start_date=date(2010, 1, 15),
             service_end_date=date(2014, 3, 20),
-            metadata={"service_number": "12345678"}
+            meta_data={"service_number": "12345678"}
         ),
         Client(
             first_name_encrypted=encrypt_field("Jane"),
@@ -157,7 +157,7 @@ def seed_clients():
             branch_of_service="US Navy",
             service_start_date=date(2012, 5, 1),
             service_end_date=date(2016, 8, 30),
-            metadata={"service_number": "87654321"}
+            meta_data={"service_number": "87654321"}
         ),
     ]
 
@@ -212,7 +212,7 @@ def seed_claims():
             file_name=f"{doc_type}.txt",
             ocr_text=doc_text,
             vector_id=vector_id,
-            metadata={"type": doc_type}
+            meta_data={"type": doc_type}
         )
         documents.append(doc)
         db.add(doc)
