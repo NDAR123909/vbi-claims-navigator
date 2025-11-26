@@ -3,8 +3,7 @@ import re
 from typing import Optional
 from cryptography.fernet import Fernet
 from cryptography.hazmat.primitives import hashes
-from cryptography.hazmat.primitives.kdf.pbkdf2 import PBKDF2
-from cryptography.hazmat.backends import default_backend
+from cryptography.hazmat.primitives.kdf.pbkdf2 import PBKDF2HMAC
 import base64
 from app.core.config import settings
 
@@ -19,17 +18,19 @@ def get_encryption_key() -> bytes:
     key_str = settings.ENCRYPTION_KEY
     if len(key_str) < 32:
         # Pad or hash to 32 bytes
-        kdf = PBKDF2(
+        kdf = PBKDF2HMAC(
             algorithm=hashes.SHA256(),
             length=32,
             salt=b'vbi_salt_2024',  # TODO: Use proper salt from config
             iterations=100000,
-            backend=default_backend()
         )
         return base64.urlsafe_b64encode(kdf.derive(key_str.encode()))
     else:
-        # Use first 32 bytes
-        return base64.urlsafe_b64encode(key_str[:32].encode().ljust(32, b'0')[:32])
+        # Use first 32 bytes, pad if needed
+        key_bytes = key_str[:32].encode()
+        if len(key_bytes) < 32:
+            key_bytes = key_bytes.ljust(32, b'0')
+        return base64.urlsafe_b64encode(key_bytes[:32])
 
 
 def encrypt_field(value: str) -> str:
