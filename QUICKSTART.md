@@ -3,8 +3,8 @@
 ## 1. Initial Setup (5 minutes)
 
 ```bash
-# Copy environment file
-cp .env.example .env
+# Copy environment file (Windows: copy env.example .env | Linux/Mac: cp env.example .env)
+copy env.example .env
 
 # Edit .env and add your OpenAI API key (optional - uses mock if not set)
 # At minimum, change API_KEY and ENCRYPTION_KEY for security
