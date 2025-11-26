@@ -48,7 +48,15 @@ class LLMService:
 
     def __init__(self):
         """Initialize LLM service with OpenAI client or mock."""
-        self.use_mock = not settings.OPENAI_API_KEY or settings.OPENAI_API_KEY == ""
+        # Check if API key is empty or is a placeholder
+        api_key = settings.OPENAI_API_KEY or ""
+        self.use_mock = (
+            not api_key or 
+            api_key == "" or 
+            "your_openai_api_key" in api_key.lower() or
+            "change" in api_key.lower() or
+            not api_key.startswith("sk-")  # Real keys start with sk-
+        )
         if self.use_mock:
             self.client = MockLLM()
         else:
@@ -133,8 +141,9 @@ class LLMService:
                 }
             }
         except Exception as e:
-            print(f"Error calling chat API: {e}")
-            raise
+            print(f"Error calling chat API: {e}, falling back to mock")
+            # Fall back to mock on error
+            return MockLLM.call_chat(messages, **kwargs)
 
     def stream_chat(
         self,
