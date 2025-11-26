@@ -1,10 +1,16 @@
 """Application configuration."""
-from pydantic_settings import BaseSettings
+from pydantic_settings import BaseSettings, SettingsConfigDict
 from typing import Optional
 
 
 class Settings(BaseSettings):
     """Application settings loaded from environment variables."""
+
+    model_config = SettingsConfigDict(
+        env_file=".env",
+        case_sensitive=True,
+        extra="ignore"  # Ignore extra environment variables
+    )
 
     # Database
     DATABASE_URL: str = "postgresql://vbi_user:vbi_pass@localhost:5432/vbi_claims"
@@ -46,10 +52,6 @@ class Settings(BaseSettings):
 
     # Encryption
     ENCRYPTION_KEY: str = "change-me-32-bytes-long"
-
-    class Config:
-        env_file = ".env"
-        case_sensitive = True
 
 
 settings = Settings()
