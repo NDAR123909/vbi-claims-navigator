@@ -18,7 +18,7 @@ class Claim(Base):
     confidence_score = Column(Float, nullable=True)
     human_review_required = Column(Boolean, default=True, nullable=False)
     template_used = Column(String, nullable=True)
-    metadata = Column(JSON, nullable=True)
+    meta_data = Column("metadata", JSON, nullable=True)  # Column name is 'metadata' in DB
     created_by = Column(Integer, ForeignKey("users.id"), nullable=True)
     created_at = Column(DateTime(timezone=True), server_default=func.now())
     updated_at = Column(DateTime(timezone=True), onupdate=func.now())
@@ -43,7 +43,7 @@ class ClaimDocument(Base):
     ocr_text = Column(Text, nullable=True)  # Extracted text from OCR
     extracted_data = Column(JSON, nullable=True)  # Structured extracted data
     vector_id = Column(String, nullable=True)  # ID in vector DB
-    metadata = Column(JSON, nullable=True)
+    meta_data = Column("metadata", JSON, nullable=True)  # Column name is 'metadata' in DB
     created_at = Column(DateTime(timezone=True), server_default=func.now())
 
     # Relationships
@@ -62,6 +62,6 @@ class AuditLog(Base):
     ip_address = Column(String, nullable=True)
     user_agent = Column(String, nullable=True)
     reason = Column(Text, nullable=True)
-    metadata = Column(JSON, nullable=True)
+    meta_data = Column("metadata", JSON, nullable=True)  # Column name is 'metadata' in DB
     timestamp = Column(DateTime(timezone=True), server_default=func.now(), index=True)
 
