@@ -59,7 +59,8 @@ Postgres (Primary DB) + Qdrant (Vector DB) + Redis (Queue)
 ```bash
 git clone <repository-url>
 cd vbi-claims-navigator
-cp .env.example .env
+# Copy environment file (Windows: copy env.example .env | Linux/Mac: cp env.example .env)
+copy env.example .env
 # Edit .env with your configuration
 ```
 
@@ -350,7 +351,7 @@ vbi-claims-navigator/
 
 ## Environment Variables
 
-See `.env.example` for all configuration options. Key variables:
+See `env.example` for all configuration options. Key variables:
 
 - `DATABASE_URL` - Postgres connection string
 - `REDIS_URL` - Redis connection string
