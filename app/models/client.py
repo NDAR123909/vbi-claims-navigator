@@ -20,7 +20,7 @@ class Client(Base):
     service_start_date = Column(Date, nullable=True)
     service_end_date = Column(Date, nullable=True)
     # Additional metadata
-    metadata = Column(JSON, nullable=True)  # For flexible additional data
+    meta_data = Column("metadata", JSON, nullable=True)  # For flexible additional data (column name is 'metadata' in DB)
     notes = Column(Text, nullable=True)
     created_at = Column(DateTime(timezone=True), server_default=func.now())
     updated_at = Column(DateTime(timezone=True), onupdate=func.now())
